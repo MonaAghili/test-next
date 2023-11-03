@@ -17,15 +17,15 @@ export const columns: ColumnDef<ListType>[] = [
       <Checkbox
         checked={table.getIsAllPageRowsSelected()}
         onCheckedChange={(value) => {
-        table.getAllFlatColumns().forEach((column) => {
-          if (column.id) {
-            console.log(
-              column.id,
-              data.map((row) => row[column.id as keyof ListType])
-            );
-          }
-        });
-        table.toggleAllPageRowsSelected(!!value);
+          table.getAllFlatColumns().forEach((column) => {
+            if (column.id) {
+              console.log(
+                column.id,
+                data.map((row) => row[column.id as keyof ListType])
+              );
+            }
+          });
+          table.toggleAllPageRowsSelected(!!value);
         }}
         aria-label="Select all"
       />
@@ -54,7 +54,12 @@ export const columns: ColumnDef<ListType>[] = [
     cell: ({ row }) => {
       const makeDate = row.original.make.date;
 
-      return <div className="text-right font-medium">{makeDate}</div>;
+      return (
+        <>
+          <div>ساخت</div>
+          <div>{makeDate}</div>
+        </>
+      );
     },
   },
   {
